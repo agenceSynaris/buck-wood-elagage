@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Buck wood élagage assure la beauté et la santé durable de votre patrimoine végétal à Antibes et ses environs.">
+<meta property="og:title" content="Buck wood élagage — Lart de la verdure, lexpertise au service de votre patrimoine végétal.">
+<meta property="og:image" content="https://images.pexels.com/photos/4920283/pexels-photo-4920283.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='8' fill='%23225740'/%3E%3Ctext x='50' y='68' font-family='sans-serif' font-size='60' font-weight='700' fill='%236B8E23' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<title>Buck wood élagage — Lart de la verdure, lexpertise au service de votre patrimoine végétal.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--p:#225740;--a:#6B8E23;--bg:#FAF9F6;--bg2:#E8F0E8;--tx:#333333;--tm:#888888;--fh:'Playfair Display',sans-serif;--fb:'Poppins',sans-serif;--r:8px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--fh);font-weight:700;line-height:1.1;letter-spacing:-.025em}
+.container{max-width:1160px;margin:0 auto;padding:0 32px}
+ 
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--p);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;height:60px}
+.nav-brand{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.06em}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.02em;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:9px 18px;border:1.5px solid var(--a);color:var(--a);border-radius:var(--r);font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;letter-spacing:.02em}
+.nav-cta:hover{background:var(--a);color:#fff}
+@media(max-width:768px){.nav-links{display:none}}
+ 
+/* HERO — text dominant */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;overflow:hidden;background:var(--p)}
+.hero-text{padding:100px 64px 80px max(32px, calc((100vw - 1160px) / 2 + 32px));display:flex;flex-direction:column;justify-content:center}
+.hero-eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:32px;height:1.5px;background:var(--a)}
+.hero h1{font-size:clamp(32px,4vw,60px);color:#fff;margin-bottom:24px;line-height:1.05}
+.hero h1 em{color:var(--a);font-style:normal}
+.hero-sub{font-size:clamp(15px,1.1vw,18px);color:rgba(255,255,255,.6);margin-bottom:40px;line-height:1.7;max-width:480px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:var(--r);font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;border:none;transition:all .2s;letter-spacing:.02em;font-family:var(--fb)}
+.btn-primary{background:var(--a);color:#fff}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.75);border:1.5px solid rgba(255,255,255,.2)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff}
+.hero-visual{height:100vh;position:relative;overflow:hidden}
+.hero-visual img{width:100%;height:100%;object-fit:cover;opacity:.6}
+.hero-visual::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--p) 0%,transparent 40%);z-index:1}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-visual{display:none}.hero-text{padding:100px 0 80px}}
+ 
+/* KEY FIGURES */
+.kf-bar{background:var(--a);padding:24px 0}
+.kf-grid{display:flex;justify-content:space-around;align-items:center;gap:20px;flex-wrap:wrap}
+.kf-item{text-align:center;color:#fff}
+.kf-value{font-family:var(--fh);font-size:36px;font-weight:800;line-height:1;margin-bottom:4px}
+.kf-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;opacity:.85}
+ 
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-text p{font-size:16px;color:var(--tm);margin-bottom:18px;line-height:1.7}
+.about-certs{margin-top:28px}
+.cert-item{display:flex;align-items:center;gap:10px;padding:10px 0;font-size:14px;color:var(--tm);border-bottom:1px solid color-mix(in srgb,var(--tx) 6%,transparent)}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--a);flex-shrink:0}
+.about-image{border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;box-shadow:0 16px 48px rgba(0,0,0,.12)}
+.about-image img{width:100%;height:100%;object-fit:cover}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:64px;padding-top:48px;border-top:2px solid color-mix(in srgb,var(--tx) 8%,transparent)}
+.stat{text-align:center}
+.stat-value{font-family:var(--fh);font-size:52px;font-weight:800;color:var(--a);line-height:1;display:block}
+.stat-label{font-size:12px;color:var(--tm);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:8px}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}.about-stats{grid-template-columns:1fr}}
+ 
+/* EXPERTISE */
+.expertise-list{display:flex;flex-direction:column;gap:0}
+.expertise-item{display:grid;grid-template-columns:56px 1fr;gap:28px;padding:32px 0;border-bottom:1px solid color-mix(in srgb,var(--tx) 8%,transparent);align-items:start;transition:background .2s}
+.expertise-item:first-child{border-top:1px solid color-mix(in srgb,var(--tx) 8%,transparent)}
+.exp-num{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--a);letter-spacing:.06em;padding-top:4px;text-transform:uppercase}
+.exp-title{font-size:22px;margin-bottom:10px;transition:color .2s}
+.exp-desc{font-size:15px;color:var(--tm);line-height:1.7}
+.expertise-item:hover .exp-title{color:var(--a)}
+ 
+/* METHOD */
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:color-mix(in srgb,var(--tx) 8%,transparent);border-radius:var(--r);overflow:hidden}
+.method-step{padding:36px;background:var(--bg);transition:background .2s}
+.method-step:hover{background:var(--bg2)}
+.method-num{font-family:var(--fh);font-size:42px;font-weight:800;color:var(--a);opacity:.25;line-height:1;margin-bottom:16px}
+.method-title{font-size:20px;margin-bottom:10px}
+.method-desc{font-size:14px;color:var(--tm);line-height:1.6}
+@media(max-width:640px){.method-grid{grid-template-columns:1fr}}
+ 
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.testimonial{padding:32px;border-radius:var(--r);background:var(--bg2);border:1px solid transparent;transition:all .3s;position:relative}
+.testimonial:hover{border-color:color-mix(in srgb,var(--a) 25%,transparent);transform:translateY(-2px)}
+.t-open-quote{font-family:var(--fh);font-size:64px;color:var(--a);opacity:.15;position:absolute;top:16px;right:20px;line-height:.8}
+.t-text{font-size:15px;color:var(--tx);line-height:1.7;margin-bottom:20px;font-style:italic}
+.t-author{display:flex;align-items:center;gap:12px}
+.t-initials{width:40px;height:40px;border-radius:50%;background:var(--a);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
+.t-name{font-weight:700;font-size:14px}
+.t-role{font-size:13px;color:var(--tm)}
+ 
+/* FAQ */
+.faq-wrap{max-width:720px;margin:0 auto}
+.faq-item{border-bottom:1px solid color-mix(in srgb,var(--tx) 8%,transparent)}
+.faq-q{width:100%;padding:22px 0;background:none;border:none;font-family:var(--fh);font-size:19px;font-weight:700;color:var(--tx);text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .2s;letter-spacing:-.01em}
+.faq-q:hover{color:var(--a)}
+.faq-icon{width:22px;height:22px;flex-shrink:0;position:relative}
+.faq-icon::before,.faq-icon::after{content:'';position:absolute;background:currentColor;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-icon::before{width:12px;height:1.5px}
+.faq-icon::after{width:1.5px;height:12px;transition:transform .3s}
+.faq-item.active .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a-inner{padding-bottom:22px;font-size:15px;color:var(--tm);line-height:1.7}
+ 
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:start}
+.contact-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--a);margin-bottom:16px;display:block}
+.contact-items{display:flex;flex-direction:column;gap:10px;margin:24px 0}
+.contact-item{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--bg2);border-radius:var(--r);font-size:14px;border:1px solid color-mix(in srgb,var(--tx) 8%,transparent)}
+.contact-item a{color:var(--tx);text-decoration:none;transition:color .2s}
+.contact-item a:hover{color:var(--a)}
+.ci-icon{color:var(--a);font-size:18px}
+.contact-hours{padding:20px;background:var(--bg2);border-radius:var(--r)}
+.contact-hours-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--a);margin-bottom:12px}
+.hours-row{display:flex;justify-content:space-between;padding:6px 0;font-size:14px;border-bottom:1px solid color-mix(in srgb,var(--tx) 6%,transparent)}
+.hours-row:last-child{border:none}
+.hours-day{font-weight:600}.hours-time{color:var(--tm)}
+#map{width:100%;min-height:400px;border-radius:var(--r);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+ 
+/* SECTION */
+.section{padding:96px 0}
+.section-alt{background:var(--bg2)}
+.section-dark{background:var(--p)}
+.section-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--a);margin-bottom:20px;display:block}
+.section-title{font-size:clamp(28px,3.5vw,46px);margin-bottom:14px;max-width:680px;letter-spacing:-.02em}
+.section-subtitle{font-size:16px;color:var(--tm);max-width:540px;margin-bottom:56px}
+ 
+/* FLOATING */
+.floating-actions{position:fixed;bottom:24px;right:24px;z-index:90;display:flex;flex-direction:column;gap:12px}
+.float-btn{width:48px;height:48px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .25s;text-decoration:none}
+.float-btn:hover{transform:translateY(-2px) scale(1.04)}
+.float-wa{background:#25D366;color:white}.float-wa svg{width:24px;height:24px}
+.float-top{background:var(--p);color:#fff;opacity:0;pointer-events:none;transition:opacity .3s}
+.float-top.visible{opacity:1;pointer-events:auto}
+.float-top svg{width:16px;height:16px}
+ 
+/* FOOTER */
+.footer{background:var(--p);color:rgba(255,255,255,.7);padding:56px 0 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand{font-family:var(--fh);font-size:18px;font-weight:800;color:#fff;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
+.footer-tagline{font-size:13px;opacity:.55;line-height:1.6;max-width:280px}
+.footer-col-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:14px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:7px}
+.footer-col a{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px;transition:color .2s}
+.footer-col a:hover{color:var(--a)}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:rgba(255,255,255,.35);flex-wrap:wrap;gap:12px}
+.footer-credit a{color:var(--a);text-decoration:none}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr}}
+ 
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);backdrop-filter:blur(16px);display:none;align-items:center;justify-content:center;cursor:zoom-out}
+.lb.active{display:flex;animation:fadeIn .3s}
+.lb img{max-width:90vw;max-height:90vh;border-radius:var(--r)}
+.lb-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);color:white;border:none;font-size:22px;cursor:pointer}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(max-width:640px){.container{padding:0 16px}.section{padding:64px 0}}
+</style>
+</head>
+<body>
+ 
+<nav class="nav"><div class="container nav-inner">
+  <div class="nav-brand">Buck wood élagage</div>
+  <div class="nav-links">
+    <a href="#about">À propos</a><a href="#expertise">Expertise</a>
+    <a href="#method">Méthode</a><a href="#faq">FAQ</a>
+  </div>
+  <a href="#contact" class="nav-cta">Prendre contact →</a>
+</div></nav>
+ 
+<header class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Service d&#39;élagage et d&#39;entretien paysager · Antibes</div>
+    <h1>Expertise paysagère : L&#39;art de l&#39;entretien végétal</h1>
+    <p class="hero-sub">Buck wood élagage assure la beauté et la santé durable de votre patrimoine végétal à Antibes et ses environs.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Demander un devis personnalisé</a>
+      <a href="#expertise" class="btn btn-ghost">Découvrir nos services</a>
+    </div>
+  </div>
+  <div class="hero-visual"><img src="https://images.pexels.com/photos/4920283/pexels-photo-4920283.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" alt="Buck wood élagage"></div>
+</header>
+ 
+<div class="kf-bar"><div class="container kf-grid"><div class="kf-item"><div class="kf-value" data-count="15" data-suffix="ans">0</div><div class="kf-label">d&#39;expérience dans l&#39;art paysager</div></div><div class="kf-item"><div class="kf-value" data-count="50" data-suffix="+ hectares">0</div><div class="kf-label">de jardins entretenus avec soin</div></div><div class="kf-item"><div class="kf-value" data-count="100" data-suffix="%">0</div><div class="kf-label">satisfaction client garantie</div></div><div class="kf-item"><div class="kf-value" data-count="150" data-suffix="+ espèces">0</div><div class="kf-label">de végétaux maîtrisés</div></div></div></div>
+ 
+<section class="section" id="about"><div class="container">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <span class="section-label">À propos</span>
+      <h2 class="section-title">Votre partenaire végétal à Antibes</h2>
+      <p>Buck wood élagage est le spécialiste local de l&#39;entretien paysager à Antibes. Nous prenons en charge l&#39;intégralité de votre patrimoine végétal, de l&#39;élagage délicat à la remise en forme complète de votre jardin ou parc.</p>
+      <p>Notre approche combine savoir-faire artisanal et techniques professionnelles pour garantir non seulement l&#39;esthétique, mais surtout la santé durable de vos végétaux.</p>
+      <div class="about-certs"><div class="cert-item"><span class="cert-dot"></span>Certificat de Maître Jardinier</div><div class="cert-item"><span class="cert-dot"></span>Membre du réseau Artisans Paysagistes</div><div class="cert-item"><span class="cert-dot"></span>Label Qualité Végétal Pro</div><div class="cert-item"><span class="cert-dot"></span>Partenariat Fournisseurs Matériaux Naturels</div></div>
+    </div>
+    <div class="reveal"><div class="about-image"><img src="https://images.pexels.com/photos/7812853/pexels-photo-7812853.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" alt="Buck wood élagage" loading="lazy"></div></div>
+  </div>
+  <div class="about-stats"><div class="stat reveal"><span class="stat-value">Antibes et Côte d&#39;Azur</span><span class="stat-label">Zone d&#39;intervention privilégiée</span></div><div class="stat reveal"><span class="stat-value">Devis gratuit</span><span class="stat-label">Évaluation initiale de votre site</span></div><div class="stat reveal"><span class="stat-value">Intervention sur mesure</span><span class="stat-label">Programme adapté à vos besoins spécifiques</span></div></div>
+</div></section>
+ 
+<section class="section section-alt" id="expertise"><div class="container">
+  <span class="section-label">Expertise</span>
+  <h2 class="section-title">Nos domaines d&#39;expertise paysagère</h2>
+  <p class="section-subtitle">Une expertise au service de vos besoins</p>
+  <div class="expertise-list">
+    <div class="expertise-item reveal" style="transition-delay:0ms">
+      <div class="exp-num">01</div>
+      <div class="exp-content">
+        <h3 class="exp-title">Élagage d&#39;arbres et de haies</h3>
+        <p class="exp-desc">Nous réalisons un élagage professionnel et respectueux des espèces, qu&#39;il s&#39;agisse de grands arbres ou de haies structurantes. Notre objectif est d&#39;assurer la vitalité de vos végétaux tout en garantissant une forme parfaite et sécurisée.</p>
+      </div>
+    </div>
+    <div class="expertise-item reveal" style="transition-delay:60ms">
+      <div class="exp-num">02</div>
+      <div class="exp-content">
+        <h3 class="exp-title">Entretien paysager et taille de végétaux</h3>
+        <p class="exp-desc">De la taille de précision aux soins phytosanitaires préventifs, nous maintenons l&#39;éclat et la santé de votre jardin. Nous intervenons sur toutes les essences, adaptant nos techniques au cycle de vie de vos plantes.</p>
+      </div>
+    </div>
+    <div class="expertise-item reveal" style="transition-delay:120ms">
+      <div class="exp-num">03</div>
+      <div class="exp-content">
+        <h3 class="exp-title">Débroussaillage et nettoyage de terrains</h3>
+        <p class="exp-desc">Assurez-vous un environnement sain et dégagé. Nous effectuons un débroussaillage complet, le nettoyage des terrains et la gestion des déchets végétaux, pour une base impeccable avant toute nouvelle plantation ou aménagement.</p>
+      </div>
+    </div>
+    <div class="expertise-item reveal" style="transition-delay:180ms">
+      <div class="exp-num">04</div>
+      <div class="exp-content">
+        <h3 class="exp-title">Conseil en jardinage et maintenance végétale</h3>
+        <p class="exp-desc">Notre expertise ne s&#39;arrête pas à la coupe. Nous vous conseillons sur les meilleures pratiques d&#39;entretien, les espèces adaptées au climat local et les plans de maintenance pour pérenniser votre cadre de vie.</p>
+      </div>
+    </div></div>
+</div></section>
+ 
+<section class="section" id="method"><div class="container">
+  <span class="section-label">Notre approche</span>
+  <h2 class="section-title">Notre méthode d&#39;intervention sur mesure</h2>
+  <p class="section-subtitle" style="margin-bottom:40px">Un accompagnement structuré, transparent, orienté résultats.</p>
+  <div class="method-grid">
+    <div class="method-step reveal">
+      <div class="method-num">01</div>
+      <div class="method-content">
+        <h3 class="method-title">Diagnostic approfondi</h3>
+        <p class="method-desc">Nous commençons par une évaluation minutieuse de votre site. Un diagnostic complet nous permet d&#39;identifier les besoins réels et les problématiques végétales de votre propriété.</p>
+      </div>
+    </div>
+    <div class="method-step reveal">
+      <div class="method-num">02</div>
+      <div class="method-content">
+        <h3 class="method-title">Proposition personnalisée</h3>
+        <p class="method-desc">Sur la base de notre expertise, nous élaborons un plan d&#39;action détaillé et un devis précis. Vous recevez une feuille de route claire pour atteindre le jardin de vos rêves.</p>
+      </div>
+    </div>
+    <div class="method-step reveal">
+      <div class="method-num">03</div>
+      <div class="method-content">
+        <h3 class="method-title">Exécution professionnelle</h3>
+        <p class="method-desc">Nos équipes qualifiées interviennent avec le matériel professionnel nécessaire. L&#39;élagage et l&#39;entretien sont réalisés avec soin, respectant l&#39;écosystème local.</p>
+      </div>
+    </div>
+    <div class="method-step reveal">
+      <div class="method-num">04</div>
+      <div class="method-content">
+        <h3 class="method-title">Suivi et pérennité</h3>
+        <p class="method-desc">Après l&#39;intervention, nous vous accompagnons par des conseils de maintenance et un suivi régulier, assurant la beauté et la longévité de votre aménagement paysager.</p>
+      </div>
+    </div></div>
+</div></section>
+ 
+<section class="section section-alt" id="testimonials"><div class="container">
+  <span class="section-label">Témoignages</span>
+  <h2 class="section-title">Ce que disent nos clients</h2>
+  <div class="testimonials-grid" style="margin-top:40px"><div class="testimonial reveal"><div class="t-open-quote">"</div><p class="t-text">Le professionnalisme de Buck wood élagage est remarquable. L&#39;élagage de nos grands arbres était complexe, mais l&#39;équipe a fait preuve d&#39;une expertise et d&#39;un soin exceptionnels. Nous sommes très satisfaits.</p><div class="t-author"><div class="t-initials">S</div><div><div class="t-name">Sophie D.</div><div class="t-role">Résidence privée, Antibes</div></div></div></div><div class="testimonial reveal"><div class="t-open-quote">"</div><p class="t-text">Un service paysager complet et très fiable. Du débroussaillage au conseil en entretien, tout était parfaitement géré. Nous recommandons vivement ce cabinet local.</p><div class="t-author"><div class="t-initials">M</div><div><div class="t-name">Marc L.</div><div class="t-role">Propriétaire de villa, Juan-les-Pins</div></div></div></div><div class="testimonial reveal"><div class="t-open-quote">"</div><p class="t-text">Ils ont su remettre en forme notre haie de manière naturelle et esthétique. Un savoir-faire local et une attention aux détails qui font toute la différence. Merci pour votre expertise !</p><div class="t-author"><div class="t-initials">É</div><div><div class="t-name">Éloïse V.</div><div class="t-role">Jardinière passionnée, Nice</div></div></div></div></div>
+</div></section>
+ 
+<section class="section" id="faq"><div class="container">
+  <span class="section-label">FAQ</span>
+  <h2 class="section-title" style="text-align:center;margin:0 auto 48px">Questions fréquentes</h2>
+  <div class="faq-wrap reveal"><div class="faq-item"><button class="faq-q">Quelle est la différence entre élagage et taille ?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">L&#39;élagage concerne principalement la réduction de la taille structurelle des arbres et arbustes pour leur santé et leur sécurité. La taille, elle, est plus spécifique et vise à maintenir une forme esthétique ou à stimuler la floraison, nécessitant une expertise végétale pointue.</div></div></div><div class="faq-item"><button class="faq-q">Quels types de végétaux traitez-vous ?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Nous maîtrisons l&#39;entretien des essences méditerranéennes classiques (cyprès, olivier, etc.) ainsi que de nombreuses espèces ornementales et fruitières. Notre expertise couvre la majorité des végétaux présents sur la Côte d&#39;Azur.</div></div></div><div class="faq-item"><button class="faq-q">Est-ce que l&#39;élagage peut être dangereux ?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Oui, l&#39;élagage de grands arbres présente des risques. Notre équipe est formée aux techniques sécurisées et utilise des équipements adaptés pour garantir la sécurité de votre propriété et de nos intervenants.</div></div></div><div class="faq-item"><button class="faq-q">Combien de temps dure une intervention typique ?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">La durée dépend de la taille du site et de l&#39;ampleur des travaux. Après diagnostic, nous vous fournissons une estimation précise du temps nécessaire pour garantir un résultat optimal.</div></div></div><div class="faq-item"><button class="faq-q">Travaillez-vous uniquement à Antibes ?<span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Nous sommes un spécialiste local, mais nous intervenons sur l&#39;ensemble de la Côte d&#39;Azur, y compris Nice, Cannes et les communes environnantes. Contactez-nous pour votre localisation.</div></div></div></div>
+</div></section>
+ 
+<section class="section section-alt" id="contact"><div class="container">
+  <div class="contact-grid">
+    <div class="reveal">
+      <span class="contact-label">Contact</span>
+      <h2 class="section-title">Parlons de votre projet végétal</h2>
+      <p style="color:var(--tm);margin-bottom:8px">Diagnostic gratuit et sans engagement. Laissez-nous prendre soin de votre cadre de vie.</p>
+      <div class="contact-items"><div class="contact-item"><span class="ci-icon">☎</span><a href="tel:0684530818">0684530818</a></div><div class="contact-item"><span class="ci-icon">✉</span><a href="mailto:contact@buckwood.fr">contact@buckwood.fr</a></div><div class="contact-item"><span class="ci-icon">⧈</span><span>6 Imp. des Chaudronniers, 06130 Grasse</span></div></div>
+      <div class="contact-hours">
+        <div class="contact-hours-title">Disponibilités</div><div class="hours-row"><span class="hours-day">Lundi - Vendredi</span><span class="hours-time">08h30 - 17h30</span></div><div class="hours-row"><span class="hours-day">Samedi</span><span class="hours-time">Sur rendez-vous</span></div><div class="hours-row"><span class="hours-day">Dimanche</span><span class="hours-time">Fermé</span></div>
+      </div>
+    </div>
+    <div id="map" class="reveal"></div>
+  </div>
+</div></section>
+ 
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Buck wood élagage</div>
+      <p class="footer-tagline">L&#39;art de la verdure, l&#39;expertise au service de votre patrimoine.</p>
+    </div>
+    <div class="footer-col"><div class="footer-col-title">Navigation</div><ul><li><a href="#">À propos</a></li><li><a href="#">Expertise</a></li><li><a href="#">Notre méthode</a></li><li><a href="#">FAQ</a></li></ul></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><ul>
+      <li><a href="tel:0684530818">0684530818</a></li>
+      <li><a href="mailto:contact@buckwood.fr">contact@buckwood.fr</a></li>
+    </ul></div>
+    <div class="footer-col"><div class="footer-col-title">Légal</div><ul><li><a href="#">Mentions légales</a></li><li><a href="#">Confidentialité</a></li><li><a href="#">RGPD</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Buck wood élagage. Tous droits réservés.</div>
+    <div class="footer-credit">Site réalisé par <a href="https://synaris.fr">Synaris</a></div>
+  </div>
+</div></footer>
+ 
+<div class="floating-actions">
+  <a href="https://wa.me/33684530818?text=Bonjour" class="float-btn float-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  </a>
+  <a href="#" class="float-btn float-top" id="floatTop" aria-label="Haut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5m0 0l-7 7m7-7l7 7"/></svg></a>
+</div>
+ 
+<div class="lb" id="lb"><button class="lb-close">×</button><img id="lbImg" src="" alt=""></div>
+ 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const ft=document.getElementById('floatTop');
+window.addEventListener('scroll',()=>{ft.classList.toggle('visible',scrollY>400);});
+ft.onclick=e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'});};
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('visible');if(e.target.classList.contains('kf-item')){const el=e.target.querySelector('.kf-value');if(el&&el.hasAttribute('data-count')){const tgt=parseInt(el.dataset.count,10)||0;const sfx=el.dataset.suffix||'';const dur=1400,st=performance.now();const tick=n=>{const pp=Math.min((n-st)/dur,1),ease=1-Math.pow(1-pp,3);el.textContent=Math.floor(tgt*ease)+sfx;if(pp<1)requestAnimationFrame(tick);else el.textContent=tgt+sfx;};requestAnimationFrame(tick);}}if(e.target.classList.contains('stat')){const el=e.target.querySelector('.stat-value');if(el&&el.hasAttribute('data-count')){const tgt=parseInt(el.dataset.count,10)||0;const sfx=el.dataset.suffix||'';const dur=1400,st=performance.now();const tick=n=>{const pp=Math.min((n-st)/dur,1),ease=1-Math.pow(1-pp,3);el.textContent=Math.floor(tgt*ease)+sfx;if(pp<1)requestAnimationFrame(tick);else el.textContent=tgt+sfx;};requestAnimationFrame(tick);}}io.unobserve(e.target);}),{threshold:.12});
+document.querySelectorAll('.reveal,.kf-item').forEach(el=>io.observe(el));
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.onclick=()=>{const item=btn.parentElement,a=item.querySelector('.faq-a'),active=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');i.querySelector('.faq-a').style.maxHeight='0';});if(!active){item.classList.add('active');a.style.maxHeight=a.scrollHeight+'px';};};});
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+lb.onclick=()=>lb.classList.remove('active');
+if(typeof L!=='undefined'){const map=L.map('map',{scrollWheelZoom:false}).setView([43.6597034,6.9273373],14);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:19}).addTo(map);const icon=L.divIcon({className:'',html:'<div style="background:#6B8E23;width:28px;height:28px;border-radius:50%;border:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.3)"></div>',iconSize:[28,28],iconAnchor:[14,14]});L.marker([43.6597034,6.9273373],{icon}).addTo(map).bindPopup('<b>Buck wood élagage</b><br>6 Imp. des Chaudronniers, 06130 Grasse');}
+</script>
+</body></html>
